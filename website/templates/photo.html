@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title><?=$this->photo['date']?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/amari.css" />
+	<link rel="stylesheet" href="/resources/style.css" />
+</head>
+<body>
+
+<div class="photo">
+	<a href="/furiku/<?=$this->directory?>/<?=$this->photo['next']?>">
+		<img class="img-photo" src="/<?=$this->photo['path']?>/<?=$this->photo['name']?>" title="<?=$this->photo['description']?>" />
+	</a>
+</div>
+<hr />
+
+<div class="description" style="background-color: var(--Beaver);">
+		<div class="inside">
+			<?=$this->photo['description']?> (<a href="/furiku/<?=$this->directory?>/<?=$this->photo['previous']?>" class="anchor-blank">previous</a> | <a href="/furiku/<?=$this->directory?>/<?=$this->photo['next']?>" class="anchor-blank">next</a> | <a href="/furiku/<?=$this->directory?>" class="anchor-blank">back to album</a> | <?=$this->percentage?>% of an album)
+		</div>
+</div>
+<hr />
+
+</body>
+</html>

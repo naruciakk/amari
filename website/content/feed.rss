@@ -1,0 +1,10 @@
+---
+title: "here put the title of your website"
+address: "here put its address"
+copyright: "your copyright goes here"
+items:
+  - {title: "example item", link: "https://example.org", date: "2020-02-15 00:30:00", description: "Example description"}
+output:
+  html5:
+    template: templates/rss.xml
+...

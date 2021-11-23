@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+	<title>$title$</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/amari.css" />
+	<link rel="stylesheet" href="/resources/style.css" />
+</head>
+<body>
+
+<nav style="background-color: var(--$color$);">
+<h1><a href="../">$title$</a></h1>
+</nav>
+<hr />
+
+<article>
+$body$
+</article>
+
+<hr />
+
+$for(menu)$
+<div style="background-color: var(--$menu.color$)"><div><h6><a href="$menu.directory$">$menu.title$</a></h6></div></div><hr />
+$endfor$
+
+$for(notes)$
+<br />
+<hr />
+<div style="background-color: var(--$notes.color$)"><div>
+	<h6>$notes.date$</h6>
+	<h4><a href="$notes.directory$">$notes.title$</a></h4>
+</div></div>
+<hr />
+$endfor$
+
+<br />
+
+</body>
+</html>

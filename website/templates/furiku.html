@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>naruciakk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/amari.css" />
+	<link rel="stylesheet" href="/resources/style.css" />
+</head>
+<body>
+
+<nav style="background-color: var(--Amber);">
+<h1><a href="<?=$this->back?>">フリクのしゃしん</a></h1>
+</nav>
+<hr />
+
+<?php if($this->body != null): ?>
+<article>
+<?=$this->body?>
+</article>
+<hr />
+<?php endif; ?>
+
+<?php foreach($this->dirs as $dir): ?>
+<div style="background-color: var(--Green)"><div><h6><a href="/furiku<?=$this->directory?>/<?=$dir?>"><?=$dir?></a></h6></div></div><hr />
+<?php endforeach; ?>
+
+<article style="text-align: justify;">
+<?php $i = 1; ?>
+<?php foreach($this->files as $file): ?>
+<a href="/furiku<?=$this->directory?>/<?=$file?>" class="button"><?php echo $i++; ?></a>&nbsp;
+<?php endforeach; ?>
+</article>
+
+</body>
+</html>

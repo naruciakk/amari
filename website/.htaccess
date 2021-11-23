@@ -1,0 +1,39 @@
+ErrorDocument 404 /templates/404.html
+
+RewriteEngine On
+# Check if requesting for files
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule .? - [S=17]
+
+# Long links
+RewriteRule ^furiku([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.pict/?$ gallery.php [QSA,L]
+
+RewriteCond %{DOCUMENT_ROOT}/content/posts$1/index.html -f
+RewriteRule ^gatari([A-Za-z0-9/-]*)/?$ content/posts$1/index.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/posts$1/$2.html -f
+RewriteRule ^gatari([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.post?$ content/posts$1/$2.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/posts$1/$2.pdf -f
+RewriteRule ^gatari([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.post?$ content/posts$1/$2.pdf [QSA,L]
+
+RewriteCond %{DOCUMENT_ROOT}/content/projects$1/index.html -f
+RewriteRule ^okucha([A-Za-z0-9/-]*)/?$ content/projects$1/index.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/projects$1/$2.html -f
+RewriteRule ^okucha([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.proj?$ content/projects$1/$2.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/projects$1/$2.pdf -f
+RewriteRule ^okucha([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.proj?$ content/projects$1/$2.pdf [QSA,L]
+
+# List files
+RewriteRule ^furiku([A-Za-z0-9/-]*)/?$ gallery.php [QSA,L]
+
+# Short links precedence
+RewriteCond %{DOCUMENT_ROOT}/content/feed.xml -f
+RewriteRule ^feed/?$ content/feed.xml [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/$1.html -f
+RewriteRule ^([A-Za-z0-9/-]+)/?$ content/$1.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/projects/$1.html -f
+RewriteRule ^([A-Za-z0-9/-]+).post/?$ content/projects/$1.html [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/photos/$1.jpg -f
+RewriteRule ^([A-Za-z0-9/-]+).pict/?$ index.php [QSA,L]
+RewriteCond %{DOCUMENT_ROOT}/content/posts/$1.html -f
+RewriteRule ^([A-Za-z0-9/-]+).post/?$ content/posts/$1.html [QSA,L]

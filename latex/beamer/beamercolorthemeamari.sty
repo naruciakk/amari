@@ -1,0 +1,125 @@
+\ProvidesPackage{beamercolorthemeamari}[2019/04/24 Color theme called Amari, version 1.875]
+\RequirePackage{etoolbox}
+\RequirePackage{kvoptions}
+
+%% This is ugly. First time using options and conditionals in LaTeX
+\SetupKeyvalOptions{
+  family=Amari,
+  prefix=AmariColour@,
+}
+\DeclareBoolOption[false]{kaigijitsu}
+\DeclareComplementaryOption{kyoukai}{kaigijitsu}
+\DeclareStringOption[Amber]{accent}[Amber]
+\ProcessKeyvalOptions*
+
+% Colors
+%% Regular palette
+\definecolor{AmariAmber}{HTML}{4F3527}
+\definecolor{AmariGreen}{HTML}{524E11}
+\definecolor{AmariBlue}{HTML}{4F7282}
+\definecolor{AmariTeal}{HTML}{4B5B5F}
+\definecolor{AmariGray}{HTML}{686D70}
+\definecolor{AmariBeaver}{HTML}{56514D}
+\definecolor{AmariUltramarine}{HTML}{292B37}
+\definecolor{AmariBackground}{HTML}{2E3436}
+\definecolor{AmariText}{HTML}{D3D7CF}
+%% Reversed palette
+\definecolor{AmariReAmber}{HTML}{B0CAD8}
+\definecolor{AmariReGreen}{HTML}{ADB1EE}
+\definecolor{AmariReBlue}{HTML}{B08D7D}
+\definecolor{AmariReTeal}{HTML}{B4A4A0}
+\definecolor{AmariReGray}{HTML}{97928F}
+\definecolor{AmariReBeaver}{HTML}{A9AEB2}
+\definecolor{AmariReUltramarine}{HTML}{D6D4C8}
+\definecolor{AmariReBackground}{HTML}{D1CBC9}
+\definecolor{AmariReText}{HTML}{2C2830}
+
+\ifboolexpe{ bool {AmariColour@kaigijitsu}}{
+%% Kaigijistu mode
+  \colorlet{AmariBaseBackground}{AmariBackground}
+  \colorlet{AmariBaseText}{AmariText}
+  \colorlet{AmariBaseAmber}{AmariAmber}
+  \colorlet{AmariBaseGreen}{AmariGreen}
+  \colorlet{AmariBaseBlue}{AmariBlue}
+  \colorlet{AmariBaseTeal}{AmariTeal}
+  \colorlet{AmariBaseGray}{AmariGray}
+  \colorlet{AmariBaseBeaver}{AmariBeaver}
+  \colorlet{AmariBaseUltramarine}{AmariUltramarine}
+}{
+%% Kyoukai mode
+  \colorlet{AmariBaseBackground}{AmariReBackground}
+  \colorlet{AmariBaseText}{AmariReText}
+  \colorlet{AmariBaseAmber}{AmariReAmber}
+  \colorlet{AmariBaseGreen}{AmariReGreen}
+  \colorlet{AmariBaseBlue}{AmariReBlue}
+  \colorlet{AmariBaseTeal}{AmariReTeal}
+  \colorlet{AmariBaseGray}{AmariReGray}
+  \colorlet{AmariBaseBeaver}{AmariReBeaver}
+  \colorlet{AmariBaseUltramarine}{AmariReUltramarine}
+}
+
+% Set Accent color
+\ifdefstring{\AmariColour@accent}{Amber}{
+  \colorlet{AmariAccent}{AmariBaseAmber}
+}{}
+\ifdefstring{\AmariColour@accent}{Green}{
+  \colorlet{AmariAccent}{AmariBaseGreen}
+}{}
+\ifdefstring{\AmariColour@accent}{Blue}{
+  \colorlet{AmariAccent}{AmariBaseBlue}
+}{}
+\ifdefstring{\AmariColour@accent}{Teal}{
+  \colorlet{AmariAccent}{AmariBaseTeal}
+}{}
+\ifdefstring{\AmariColour@accent}{Gray}{
+  \colorlet{AmariAccent}{AmariBaseGray}
+}{}
+\ifdefstring{\AmariColour@accent}{Beaver}{
+  \colorlet{AmariAccent}{AmariBaseBeaver}
+}{}
+\ifdefstring{\AmariColour@accent}{Ultramarine}{
+  \colorlet{AmariAccent}{AmariBaseUltramarine}
+}{}
+
+\mode<presentation>
+
+\setbeamercolor{normal text}{fg=AmariBaseText, bg=AmariBaseBackground}
+\setbeamercolor{alerted text}{fg=AmariBaseText, bg=AmariAccent}
+% based css pre element
+\setbeamercolor{example text}{fg=AmariBaseText, bg=AmariAccent}
+
+% Structure elements use css style for header
+\setbeamercolor*{structure}{bg=AmariAccent}
+
+\setbeamercolor*{palette primary}{bg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette secondary}{bg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette tertiary}{bg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette quaternary}{bg=AmariAccent, fg=AmariBaseText}
+
+% Header and footer from CSS
+\setbeamercolor{footline}{bg=AmariAccent,fg=AmariAccent}
+\setbeamercolor{headline}{bg=AmariAccent,fg=AmariAccent}
+
+% Titles
+\setbeamercolor*{titlelike}{bg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{frametitle}{bg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{title}{bg=AmariAccent, fg=AmariBaseText}
+
+% border-color for headings
+\setbeamercolor{separation line}{fg=AmariBaseText}
+\setbeamercolor{fine separation line}{fg=AmariBaseText}
+
+% set sidebar and footline
+\setbeamercolor*{sidebar}{parent=headline}
+\setbeamercolor*{palette sidebar primary}{fg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette sidebar secondary}{fg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette sidebar tertiary}{fg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{palette sidebar quaternary}{fg=AmariAccent, fg=AmariBaseText}
+\setbeamercolor*{section in sidebar shaded}{parent=palette sidebar primary}
+
+% notes
+\setbeamercolor{note page}{bg=AmariBaseBackground, fg=AmariBaseText}
+\setbeamercolor{note title}{bg=AmariAccent, fg=AmariBaseText}
+
+\mode
+<all>
