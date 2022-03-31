@@ -3,6 +3,7 @@ body {
 	padding: 0;
 	width: 100%;
 	max-width: none;
+	font-family: "Dinish", sans-serif;
 }
 
 footer {
@@ -17,17 +18,23 @@ footer > h5 {
 
 header {
 	padding: 0;
+	max-width: 60em;
+	margin: 0 auto;
+	padding: 0 20px;
+	box-sizing: border-box;
 	margin-top: 3rem;
-	text-align: center;
+	height: 200px;
 	margin-bottom: 3.5rem;
+}
+
+header > div {
+	float: left;
+	display: block;
+	margin-left: 3rem;
 }
 
 header > h1, header > h2, header > h3, header > h4, header > h5, header > h6 {
 	margin: 0;
-}
-
-header > img {
-	border-radius: 50%;
 }
 
 article, section {
@@ -60,9 +67,14 @@ div {
 	box-sizing: border-box;
 }
 
+hr {
+	clear: both;
+}
+
 div > div {
 	max-width: 60em;
 	margin: 0 auto;
+	clear: both;
 }
 
 div > h6, div > h5, div > h4, div > h3, div > h1 {
@@ -71,6 +83,10 @@ div > h6, div > h5, div > h4, div > h3, div > h1 {
 
 div > h2 {
 	margin: 0.3em;
+}
+
+.u-photo {
+	border: 1px solid var(--Text);
 }
 
 @media (max-width: 60em) {
@@ -112,6 +128,7 @@ div > h2 {
 	text-align: center;
 	margin: 0 auto;
 	max-height: 100vh;
+	margin-bottom: 0.4em;
 }
 .description {
 	margin: 0;

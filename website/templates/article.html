@@ -4,16 +4,21 @@
   <meta charset="utf-8" />
 	<title>$title$</title>
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/dinish.css" />
 	<link rel="stylesheet" href="/resources/amari.css" />
 </head>
-<body>
+<body style="font-family: "Dinish", sans-serif;">
 
-<h1>$title$</h1>
-<h6>$date$</h6>
+<div class="h-entry">
+
+<h1 class="p-name">$title$</h1>
+<h6><time class="dt-published" datetime="$datetime$">$date$</time></h6>
 <hr />
-$body$
+<div class="e-content">$body$</div>
 
 <h4><a href="./">Go back to the shadows</a></h4>
+
+</div>
 
 </body>
 </html>
