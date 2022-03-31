@@ -7,8 +7,8 @@
 \newlength{\backgroundwidth}
 
 \SetupKeyvalOptions{
-				family=Amari,
-				prefix=AmariMain@,
+	family=Amari,
+	prefix=AmariMain@,
 }
 \DeclareBoolOption[false]{kaigijitsu}
 \DeclareComplementaryOption{kyoukai}{kaigijitsu}
@@ -17,71 +17,72 @@
 
 % import colours
 \ifboolexpe{ bool {AmariMain@kaigijitsu}}{
-				\ifdefstring{\AmariMain@accent}{Amber}{
-								\usecolortheme[accent=Amber,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Green}{
-								\usecolortheme[accent=Green,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Blue}{
-								\usecolortheme[accent=Blue,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Teal}{
-								\usecolortheme[accent=Teal,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Gray}{
-								\usecolortheme[accent=Gray,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Beaver}{
-								\usecolortheme[accent=Beaver,kaigijitsu]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Ultramarine}{
-								\usecolortheme[accent=Ultramarine,kaigijitsu]{amari}
-				}{}
+	\ifdefstring{\AmariMain@accent}{Amber}{
+		\usecolortheme[accent=Amber,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Green}{
+		\usecolortheme[accent=Green,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Blue}{
+		\usecolortheme[accent=Blue,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Teal}{
+		\usecolortheme[accent=Teal,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Gray}{
+		\usecolortheme[accent=Gray,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Beaver}{
+		\usecolortheme[accent=Beaver,kaigijitsu]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Ultramarine}{
+		\usecolortheme[accent=Ultramarine,kaigijitsu]{amari}
+	}{}
 }{
-				\ifdefstring{\AmariMain@accent}{Amber}{
-								\usecolortheme[accent=Amber,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Green}{
-								\usecolortheme[accent=Green,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Blue}{
-								\usecolortheme[accent=Blue,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Teal}{
-								\usecolortheme[accent=Teal,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Gray}{
-								\usecolortheme[accent=Gray,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Beaver}{
-								\usecolortheme[accent=Beaver,kyoukai]{amari}
-				}{}
-				\ifdefstring{\AmariMain@accent}{Ultramarine}{
-								\usecolortheme[accent=Ultramarine,kyoukai]{amari}
-				}{}
+	\ifdefstring{\AmariMain@accent}{Amber}{
+		\usecolortheme[accent=Amber,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Green}{
+		\usecolortheme[accent=Green,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Blue}{
+		\usecolortheme[accent=Blue,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Teal}{
+		\usecolortheme[accent=Teal,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Gray}{
+		\usecolortheme[accent=Gray,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Beaver}{
+		\usecolortheme[accent=Beaver,kyoukai]{amari}
+	}{}
+	\ifdefstring{\AmariMain@accent}{Ultramarine}{
+		\usecolortheme[accent=Ultramarine,kyoukai]{amari}
+	}{}
 }
 
 % add the superior font – Comic ****, but open source
 \newfontfamily{\owowhatsthis}{[ComicRelief.ttf]}
 
-\setsansfont[ItalicFont={Fira Sans Light Italic}, BoldFont={Fira Sans},BoldItalicFont={Fira Sans Italic}]{Fira Sans Light}
+\setsansfont[ItalicFont={Dinish-Italic.ttf}, BoldFont={Dinish-Bold.ttf}]{Dinish-Regular.ttf}
+
 
 % itemize elements
 \setbeamertemplate{itemize item}{
-				\tikz{
-								\draw[fill=AmariBaseText,draw=none] (0, 0) rectangle(0.1, 0.1);
-								\draw[fill=AmariBaseText,draw=none] (0.1, 0.1) rectangle(0.2, 0.2);
-								\draw[fill=AmariBaseText,draw=none] (0, 0.2) rectangle(0.1, 0.3);
-				}
+	\tikz{
+		\draw[fill=AmariBaseText,draw=none] (0, 0) rectangle(0.1, 0.1);
+		\draw[fill=AmariBaseText,draw=none] (0.1, 0.1) rectangle(0.2, 0.2);
+		\draw[fill=AmariBaseText,draw=none] (0, 0.2) rectangle(0.1, 0.3);
+	}
 }
 
 \setbeamertemplate{itemize subitem}{
-				\tikz{
-								\draw[fill=AmariBaseText,draw=none] (0, 0) rectangle(0.075, 0.075);
-								\draw[fill=AmariBaseText,draw=none] (0.075, 0.075) rectangle(0.15, 0.15);
-								\draw[fill=AmariBaseText,draw=none] (0, 0.15) rectangle(0.075, 0.225);
-				}
+	\tikz{
+		\draw[fill=AmariBaseText,draw=none] (0, 0) rectangle(0.075, 0.075);
+		\draw[fill=AmariBaseText,draw=none] (0.075, 0.075) rectangle(0.15, 0.15);
+		\draw[fill=AmariBaseText,draw=none] (0, 0.15) rectangle(0.075, 0.225);
+	}
 }
 
 \setbeamerfont{frametitle}{size=\large,series=\owowhatsthis}
@@ -99,11 +100,11 @@
 
 % ending slides (without numbering)
 \newcommand{\backupbegin}{
-				\newcounter{finalframe}
-				\setcounter{finalframe}{\value{framenumber}}
+	\newcounter{finalframe}
+	\setcounter{finalframe}{\value{framenumber}}
 }
 \newcommand{\backupend}{
-				\setcounter{framenumber}{\value{finalframe}}
+	\setcounter{framenumber}{\value{finalframe}}
 }
 
 % use \makeatletter for our progress bar definitions
@@ -124,127 +125,127 @@
 \slideheight=\the\paperheight
 
 \BeforeBeginEnvironment{frame}{
-				\setbeamertemplate{navigation symbols}{
-								% progress bar calculations
-								\progressbar@tmpcounta=\insertframenumber
-								\progressbar@tmpcountb=\inserttotalframenumber
-								\progressbar@tmpdim=\progressbar@pbwidth
-								\divide\progressbar@tmpdim by 100
-								\multiply\progressbar@tmpdim by \progressbar@tmpcounta
-								\divide\progressbar@tmpdim by \progressbar@tmpcountb
-								\multiply\progressbar@tmpdim by 100
+	\setbeamertemplate{navigation symbols}{
+		% progress bar calculations
+		\progressbar@tmpcounta=\insertframenumber
+		\progressbar@tmpcountb=\inserttotalframenumber
+		\progressbar@tmpdim=\progressbar@pbwidth
+		\divide\progressbar@tmpdim by 100
+		\multiply\progressbar@tmpdim by \progressbar@tmpcounta
+		\divide\progressbar@tmpdim by \progressbar@tmpcountb
+		\multiply\progressbar@tmpdim by 100
 
-								\begin{tikzpicture}
-												\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
-												% show the progress bar
-												\draw[fill=AmariAccent,draw=none] (0cm,0cm) rectangle(\progressbar@tmpdim+0.2cm,0.15cm);
+		\begin{tikzpicture}
+			\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
+			% show the progress bar
+			\draw[fill=AmariAccent,draw=none] (0cm,0cm) rectangle(\progressbar@tmpdim+0.2cm,0.15cm);
 
-												% bottom information
-												\node[anchor=south west] at(0.4cm,0.25cm) {\color{AmariBaseText}\tiny\vphantom{lp}\insertsection};
-												\node[anchor=south east] at(\slidewidth-0.2cm,0.25cm) {\color{AmariBaseText}\tiny\insertframenumber/\inserttotalframenumber};
-								\end{tikzpicture}
-				}
+			% bottom information
+			\node[anchor=south west] at(0.4cm,0.25cm) {\color{AmariBaseText}\tiny\vphantom{lp}\insertsection};
+			\node[anchor=south east] at(\slidewidth-0.2cm,0.25cm) {\color{AmariBaseText}\tiny\insertframenumber/\inserttotalframenumber};
+		\end{tikzpicture}
+	}
 
-				\setbeamertemplate{background}{}
+	\setbeamertemplate{background}{}
 }
 
 % custom options
 \define@key{beamerframe}{image}{
-				\setbeamertemplate{background}{
-								\settowidth{\backgroundwidth}{\includegraphics [width=\slidewidth,height=\slideheight,keepaspectratio]{#1}}
-								\ifthenelse{\backgroundwidth < \slidewidth}{
-								\begin{tikzpicture}
-												\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
-												\node[opacity=.3, minimum width=\slidewidth, minimum height=\slideheight] at (0.5\slidewidth-0.2cm, 0.5\slideheight) {\includegraphics [width=\slidewidth,keepaspectratio]{#1}};
-								\end{tikzpicture}
-								}{
-								\begin{tikzpicture}
-												\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
-												\node[opacity=.3, minimum width=\slidewidth, minimum height=\slideheight] at (0.5\slidewidth-0.2cm, 0.5\slideheight) {\includegraphics [height=\slideheight,keepaspectratio]{#1}};
-								\end{tikzpicture}
-								}
-				}
+	\setbeamertemplate{background}{
+		\settowidth{\backgroundwidth}{\includegraphics [width=\slidewidth,height=\slideheight,keepaspectratio]{#1}}
+		\ifthenelse{\backgroundwidth < \slidewidth}{
+			\begin{tikzpicture}
+				\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
+				\node[opacity=.3, minimum width=\slidewidth, minimum height=\slideheight] at (0.5\slidewidth-0.2cm, 0.5\slideheight) {\includegraphics [width=\slidewidth,keepaspectratio]{#1}};
+			\end{tikzpicture}
+		}{
+			\begin{tikzpicture}
+				\useasboundingbox (0, 0) rectangle(\slidewidth,\slideheight);
+				\node[opacity=.3, minimum width=\slidewidth, minimum height=\slideheight] at (0.5\slidewidth-0.2cm, 0.5\slideheight) {\includegraphics [height=\slideheight,keepaspectratio]{#1}};
+			\end{tikzpicture}
+		}
+	}
 }
 
 \define@key{beamerframe}{nonavigation}[true]{
-				\setbeamertemplate{navigation symbols}{}
+	\setbeamertemplate{navigation symbols}{}
 }
 
 \makeatother
 
 % custom title page
 \setbeamertemplate{title page}{
-				\begin{tikzpicture}
-								\useasboundingbox (1cm,0) rectangle(\the\paperwidth,\the\paperheight);
-								\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-								\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.9\slideheight-0.15cm) {\color{AmariBaseText}\Large\owowhatsthis{\inserttitle}};
-								\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.8\slideheight-0.15cm) {\color{AmariBaseText}\small{\insertsubtitle}};
-								\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.70\slideheight-0.15cm) {\color{AmariBaseText}\footnotesize\owowhatsthis{\insertauthor}};
-								\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.65\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertinstitute}};
-								\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.57\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertdate}};
-				\end{tikzpicture}
+	\begin{tikzpicture}
+		\useasboundingbox (1cm,0) rectangle(\the\paperwidth,\the\paperheight);
+		\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.9\slideheight-0.15cm) {\color{AmariBaseText}\Large\owowhatsthis{\inserttitle}};
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.8\slideheight-0.15cm) {\color{AmariBaseText}\small{\insertsubtitle}};
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.70\slideheight-0.15cm) {\color{AmariBaseText}\footnotesize\owowhatsthis{\insertauthor}};
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.65\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertinstitute}};
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.57\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertdate}};
+	\end{tikzpicture}
 }
 
 \newcommand{\fullframe}[2][]{
-				\ifthenelse{\equal{#1}{}}{
-								\begin{frame}[plain,nonavigation]
-												\begin{tikzpicture}
-																\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
-																\fill[color=AmariAccent] (0, 0) rectangle(\slidewidth,\slideheight);
-																\node[text width=\the\paperwidth-1cm,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}{
-								\begin{frame}[plain,nonavigation,image=#1]
-												\begin{tikzpicture}
-																\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
-																\node[text width=\the\paperwidth,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}
+	\ifthenelse{\equal{#1}{}}{
+		\begin{frame}[plain,nonavigation]
+			\begin{tikzpicture}
+				\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
+				\fill[color=AmariAccent] (0, 0) rectangle(\slidewidth,\slideheight);
+				\node[text width=\the\paperwidth-1cm,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}{
+		\begin{frame}[plain,nonavigation,image=#1]
+			\begin{tikzpicture}
+				\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
+				\node[text width=\the\paperwidth,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}
 }
 
 % custom section
 \newcommand{\fumi}[2][]{
-				\section{#2}
-				\ifthenelse{\equal{#1}{}}{
-								\begin{frame}
-												\begin{tikzpicture}
-																\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-																\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}{
-								\begin{frame}[image=#1]
-												\begin{tikzpicture}
-																\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-																\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}
+	\section{#2}
+	\ifthenelse{\equal{#1}{}}{
+		\begin{frame}
+			\begin{tikzpicture}
+				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}{
+		\begin{frame}[image=#1]
+			\begin{tikzpicture}
+				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}
 }
 
 \newcommand{\subfumi}[2][]{
-				\subsection{#2}
-				\ifthenelse{\equal{#1}{}}{
-								\begin{frame}
-												\begin{tikzpicture}
-																\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-																\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}{
-								\begin{frame}[image=#1]
-												\begin{tikzpicture}
-																\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-																\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
-																\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
-												\end{tikzpicture}
-								\end{frame}
-				}
+	\subsection{#2}
+	\ifthenelse{\equal{#1}{}}{
+		\begin{frame}
+			\begin{tikzpicture}
+				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}{
+		\begin{frame}[image=#1]
+			\begin{tikzpicture}
+				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
+			\end{tikzpicture}
+		\end{frame}
+	}
 }
