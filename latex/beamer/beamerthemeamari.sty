@@ -3,6 +3,7 @@
 \usepackage[none]{hyphenat}
 \usepackage{fontspec}
 \usepackage{ifthen}
+\usepackage{contour}
 \defaultfontfeatures{Ligatures=TeX}
 \newlength{\backgroundwidth}
 
@@ -178,7 +179,7 @@
 	\begin{tikzpicture}
 		\useasboundingbox (1cm,0) rectangle(\the\paperwidth,\the\paperheight);
 		\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.9\slideheight-0.15cm) {\color{AmariBaseText}\Large\owowhatsthis{\inserttitle}};
+		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.9\slideheight-0.15cm) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\inserttitle}}};
 		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.8\slideheight-0.15cm) {\color{AmariBaseText}\small{\insertsubtitle}};
 		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.70\slideheight-0.15cm) {\color{AmariBaseText}\footnotesize\owowhatsthis{\insertauthor}};
 		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.65\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertinstitute}};
@@ -192,14 +193,14 @@
 			\begin{tikzpicture}
 				\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
 				\fill[color=AmariAccent] (0, 0) rectangle(\slidewidth,\slideheight);
-				\node[text width=\the\paperwidth-1cm,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth-1cm,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}{
 		\begin{frame}[plain,nonavigation,image=#1]
 			\begin{tikzpicture}
 				\useasboundingbox (1cm, 0) rectangle(\slidewidth,\slideheight);
-				\node[text width=\the\paperwidth,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth,align=center] at (0.5\slidewidth, 0.5\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}
@@ -213,7 +214,7 @@
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
 				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}{
@@ -221,7 +222,7 @@
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
 				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}
@@ -234,8 +235,8 @@
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
 				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}{
@@ -243,8 +244,8 @@
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
 				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\owowhatsthis{\insertsection}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\owowhatsthis{#2}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}

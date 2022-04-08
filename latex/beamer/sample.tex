@@ -13,66 +13,65 @@
 \date{2020-03-13}
 
 \begin{document}
-				\frame[nonavigation,image=bg.jpg]{\titlepage}
-				\setcounter{framenumber}{0}
+	\frame[nonavigation,image=bg.jpg]{\titlepage}
+	\setcounter{framenumber}{0}
 
-				\begin{frame}
-								\frametitle{Contents}
-								\begin{enumerate}
-												\item Introduction \\ {\footnotesize\hspace{1em} First example}
-												\item This one has background \\ {\footnotesize\hspace{1em} Second example}
-												\item Conclusions \\ {\footnotesize\hspace{1em} Third example}
-								\end{enumerate}
-				\end{frame}
+	\begin{frame}
+		\frametitle{Contents}
+		\begin{enumerate}
+			\item Introduction \\ {\footnotesize\hspace{1em} First example}
+			\item This one has background \\ {\footnotesize\hspace{1em} Second example}
+			\item Conclusions \\ {\footnotesize\hspace{1em} Third example}
+		\end{enumerate}
+	\end{frame}
 
-				\fumi{Introduction}
+	\fumi{Introduction}
+	\begin{frame}
+		\frametitle{Why Amari?}
+		\begin{enumerate}
+			\item No idea
+			\item Seriously, run
+		\end{enumerate}
+		\note[item]{Note that this slide is boring.}
+		\note[item]{Observe that there are no actual bullets here.}
+		\note[item]{Future work: add another bullet.}
+	\end{frame}
 
-				\begin{frame}
-								\frametitle{Why Amari?}
-								\begin{enumerate}
-												\item No idea
-												\item Seriously, run
-								\end{enumerate}
-								\note[item]{Note that this slide is boring.}
-								\note[item]{Observe that there are no actual bullets here.}
-								\note[item]{Future work: add another bullet.}
-				\end{frame}
+	\begin{frame}
+		\frametitle{Why Amari?}
+		\begin{itemize}
+			\item Seriously, it's worthless
+			\item This can't even do sections and subsections properly without a custom function (fumi and subfumi, because author is a weeb)
+		\end{itemize}
+	\end{frame}
 
-				\begin{frame}
-								\frametitle{Why Amari?}
-								\begin{itemize}
-												\item Seriously, it's worthless
-												\item This can't even do sections and subsections properly without a custom function (fumi and subfumi, because author is a weeb)
-								\end{itemize}
-				\end{frame}
+	\fumi[bg.jpg]{This one has background}
+	\subfumi{Or does it?}
 
-				\fumi[bg.jpg]{This one has background}
-				\subfumi{Or does it?}
+	\begin{frame}
+		\frametitle{Lorem 1}
+		\blindtext
+	\end{frame}
 
-				\begin{frame}
-								\frametitle{Lorem 1}
-								\blindtext
-				\end{frame}
+	\begin{frame}
+		\frametitle{Lorem 2}
+		\blindtext
+	\end{frame}
 
-				\begin{frame}
-								\frametitle{Lorem 2}
-								\blindtext
-				\end{frame}
+	\fumi[bg.jpg]{Conclusions}
 
-				\fumi[bg.jpg]{Conclusions}
+	\begin{frame}
+		\frametitle{Closing Thoughts}
+		\begin{itemize}
+			\item Yay, Beamer!
+			\item The layout is a bit based on Execushares, just a bit (I took their bullet points and footer)
+		\end{itemize}
+	\end{frame}
 
-				\begin{frame}
-								\frametitle{Closing Thoughts}
-								\begin{itemize}
-												\item Yay, Beamer!
-												\item The layout is a bit based on Execushares, just a bit (I took their bullet points and footer)
-								\end{itemize}
-				\end{frame}
-
-				\appendix
-				\backupbegin
-				\fullframe{This one is a full frame!}
-				\fullframe[bg.jpg]{This one is a full frame with an image in the background!}
-				\backupend
+	\appendix
+	\backupbegin
+	\fullframe{This one is a full frame!}
+	\fullframe[bg.jpg]{This one is a full frame with an image in the background!}
+	\backupend
 
 \end{document}
