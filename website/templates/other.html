@@ -10,18 +10,9 @@
 </head>
 <body>
 
-<nav style="background-color: var(--Amber);">
-<h1><a href="<?=$this->back?>">フリクのしゃしん</a></h1>
+<nav style="background-color: var(--Teal);">
+<h1><a href="<?=$this->back?>"><?=$this->title?></a></h1>
 </nav>
-<hr />
-
-<div style="background-color: var(--Ultramarine);"><div>
-<a href="https://naruciakk.eu/">~</a> /
-<?php foreach($this->backline as $bkln): ?>
-<a href="<?=$bkln[1]?>"><?=$bkln[0]?></a> /
-<?php endforeach; ?>
-<?=$this->current_name?>
-</div></div>
 <hr />
 
 <?php if($this->body != null): ?>
@@ -32,13 +23,13 @@
 <?php endif; ?>
 
 <?php foreach($this->dirs as $dir): ?>
-<div style="background-color: var(--Green)"><div><h6><a href="/furiku<?=$this->directory?>/<?=$dir?>"><?=$dir?></a></h6></div></div><hr />
+<div style="background-color: var(--Blue)"><div><h6><a href="/<?=$this->directory?>/<?=$dir?>"><?=$dir?></a></h6></div></div><hr />
 <?php endforeach; ?>
 
 <article style="text-align: justify;">
 <?php $i = 1; ?>
 <?php foreach($this->files as $file): ?>
-<a href="/furiku<?=$this->directory?>/<?=$file?>" class="button"><?php echo $i++; ?></a>&nbsp;
+<a href="<?=$this->directory?>/<?=$file?>" class="button"><?php echo $i++; ?></a>&nbsp;
 <?php endforeach; ?>
 </article>
 

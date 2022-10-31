@@ -44,7 +44,8 @@ function expandDirectories($base_dir) {
 
 function getPath($name, $param, $filetypes, $datadir) {
 	$Parsedown = new Parsedown();
-	$emptyParam = str_replace("/".$name."/", "", $param);
+	$emptyParam = ltrim($param, "/");
+	$emptyParam = str_replace($name."/", "", $emptyParam);
 	if($param == "/".$name) $emptyParam = "";
 	$path = $datadir.'/'.$emptyParam;
 	$answer['body'] = null;
@@ -59,20 +60,37 @@ function getPath($name, $param, $filetypes, $datadir) {
 	$answer['files'] = $files;
 	$answer['directory'] = $emptyParam;
 	if($answer['directory'] != "") $answer['directory'] = '/'.$emptyParam;
-	$answer['back'] = dirname('/'.$name.$answer['directory']);	
-	
+	$answer['back'] = dirname('/'.$name.$answer['directory']);
+	$userPath = trim("furiku/".$emptyParam, "/");
+	$answer['current_name'] = basename($userPath);
+	$backline = "";
+	$answer['backline'] = null;
+	foreach(explode('/', $userPath) as $key =>$elem) {
+		$backline .= "/".$elem;
+		$answer['backline'][$key][0] = $elem;
+		$answer['backline'][$key][1] = $backline;	
+	}
+	array_pop($answer['backline']);
+	$answer['title'] = $emptyParam;
+
 	return $answer;
 }
 
 function showPhoto($name, $path) {
+	$Parsedown = new Parsedown();
+	$raw_name = basename($path, '.pict');
 	$path = str_replace('.pict', '.jpg', $path);
 	$path = str_replace('/'.$name.'/', '', $path);
+	$path = str_replace('//', '/', $path);
 	if(!file_exists($path)) $path = str_replace('.jpg', '.png', $path);
 	$photo = exif_read_data($path, 0, true);
-	$answer['description'] = $photo['IFD0']['ImageDescription'];
+	$answer['description'] = utf8_encode($photo['IFD0']['ImageDescription']);
+	if(empty($answer['description'])) $answer['description'] = $photo['COMPUTED']['UserComment'];
 	$answer['date'] = $photo['EXIF']['DateTimeOriginal'];
+	if(empty($answer['date'])) $answer['date'] = "ＮＯ　ＤＡＴＡ";
 	$answer['name'] = basename($path);
 	$path = str_replace('/'.$answer['name'], '', $path);
+	if(file_exists($path.'/'.$raw_name.'.md')) $answer['description'] = $Parsedown->text(file_get_contents($path.'/'.$raw_name.'.md'));
 	$files = glob($path.'/*.{jpg,png}', GLOB_BRACE);
 	$filename = $path.'/'.$answer['name'];
 	$number = array_search($filename, $files);
@@ -87,28 +105,51 @@ function showPhoto($name, $path) {
 	$answer['previous'] = str_replace('.png', '.pict', $answer['previous']);
 	$answer['number'] = $number;
 	$answer['files'] = count($files);
-	$answer['path'] = $path;
+	$answer['path'] = $path; 
 
 	return $answer;
 }
 
 $params = $_SERVER["REQUEST_URI"];
 
-if(strpos($params, '.pict')) {
-	$photo = showPhoto('furiku','content/photos/'.$params);
-
-	$view = new Template();
-	$view->photo = $photo;
-	$view->percentage = ($photo['number']+1)/$photo['files'] * 100;
-	$view->directory = str_replace('content/photos/', '', $photo['path']);
-	echo $view->render('photo.html');
+if(strpos($params, 'furiku')) {
+	if(strpos($params, '.pict')) {
+		$photo = showPhoto('furiku','content/photos/'.$params);
+		$view = new Template();
+		$view->photo = $photo;
+		$view->percentage = ($photo['number']+1)/$photo['files'] * 100;
+		$view->directory = str_replace('content/photos/', '', $photo['path']);
+		echo $view->render('photo.html');
+	} else {
+		$path = getPath('furiku',$params,'jpg,png','content/photos');
+		$view = new Template();
+		$view->body = $path['body'];
+		$view->back = $path['back'];
+		$view->dirs = $path['dirs'];
+		$view->files = $path['files'];
+		$view->directory = $path['directory'];
+		$view->backline = $path['backline'];
+		$view->current_name = $path['current_name'];
+		echo $view->render('furiku.html');
+	}
 } else {
-	$path = getPath('furiku',$params,'jpg,png','content/photos');
-	$view = new Template();
-	$view->body = $path['body'];
-	$view->back = $path['back'];
-	$view->dirs = $path['dirs'];
-	$view->files = $path['files'];
-	$view->directory = $path['directory'];
-	echo $view->render('furiku.html');
+	if(strpos($params, '.pict')) {
+		$photo = showPhoto('blank','content/other/'.$params);
+		$view = new Template();
+		$view->photo = $photo;
+		$view->directory = str_replace('content/other/', '', $photo['path']);
+		echo $view->render('picture.html');
+	} else {
+		$path = getPath('',$params,'jpg,png','content/other');
+		$view = new Template();
+		$view->body = $path['body'];
+		$view->back = $path['back'];
+		$view->dirs = $path['dirs'];
+		$view->files = $path['files'];
+		$view->directory = $path['directory'];
+		$view->backline = $path['backline'];
+		$view->current_name = $path['current_name'];
+		$view->title = $path['title'];
+		echo $view->render('other.html');
+	}
 }

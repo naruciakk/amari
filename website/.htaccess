@@ -37,3 +37,7 @@ RewriteCond %{DOCUMENT_ROOT}/content/photos/$1.jpg -f
 RewriteRule ^([A-Za-z0-9/-]+).pict/?$ index.php [QSA,L]
 RewriteCond %{DOCUMENT_ROOT}/content/posts/$1.html -f
 RewriteRule ^([A-Za-z0-9/-]+).post/?$ content/posts/$1.html [QSA,L]
+
+# Universal redirect
+RewriteRule ^([A-Za-z0-9/-]*)/?$ gallery.php [QSA,L]
+RewriteRule ^([A-Za-z0-9/-]+).pict/?$ gallery.php [QSA,L]

@@ -12,14 +12,14 @@
 
 <div class="photo">
 	<a href="/furiku/<?=$this->directory?>/<?=$this->photo['next']?>">
-		<img class="img-photo" src="/<?=$this->photo['path']?>/<?=$this->photo['name']?>" title="<?=$this->photo['description']?>" />
+		<img class="img-photo" src="/<?=$this->photo['path']?>/<?=$this->photo['name']?>" />
 	</a>
 </div>
 <hr />
 
 <div class="description" style="background-color: var(--Beaver);">
 		<div class="inside">
-			<?=$this->photo['description']?> (<a href="/furiku/<?=$this->directory?>/<?=$this->photo['previous']?>" class="anchor-blank">previous</a> | <a href="/furiku/<?=$this->directory?>/<?=$this->photo['next']?>" class="anchor-blank">next</a> | <a href="/furiku/<?=$this->directory?>" class="anchor-blank">back to album</a> | <?=$this->percentage?>% of an album)
+			<?=$this->photo['description']?> (<a href="/furiku/<?=$this->directory?>/<?=$this->photo['previous']?>" class="anchor-blank">previous</a> | <a href="/furiku/<?=$this->directory?>/<?=$this->photo['next']?>" class="anchor-blank">next</a> | <a href="/furiku/<?=$this->directory?>" class="anchor-blank">back to album</a> | <?=$this->photo['date']?> | <?=round($this->percentage)?>% of an album)
 		</div>
 </div>
 <hr />

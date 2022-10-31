@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title><?=$this->photo['date']?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/dinish.css" />
+	<link rel="stylesheet" href="/resources/amari.css" />
+	<link rel="stylesheet" href="/resources/style.css" />
+</head>
+<body>
+
+<div class="photo">
+	<a href="/<?=$this->directory?>/<?=$this->photo['next']?>">
+		<img class="img-photo" src="/<?=$this->photo['path']?>/<?=$this->photo['name']?>" />
+	</a>
+</div>
+
+<hr />
+
+<div class="description" style="background-color: var(--Blue);">
+	<div class="inside">
+		<?=$this->photo['description']?> (<a href="/<?=$this->directory?>/<?=$this->photo['previous']?>" class="anchor-blank">previous</a> | <a href="/<?=$this->directory?>/<?=$this->photo['next']?>" class="anchor-blank">next</a> | <a href="/<?=$this->directory?>" class="anchor-blank">back to album</a>)
+	</div>
+</div>
+<hr />
+
+<div class="inside">
+<span style="font-style: italic; font-size: small;">You can proceed to the next picture by clicking on the current one.</span>
+</div>
+
+</body>
+</html>
