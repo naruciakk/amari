@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title><?=$this->current_name?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/resources/dinish.css" />
+	<link rel="stylesheet" href="/resources/amari.css" />
+	<link rel="stylesheet" href="/resources/style.css" />
+</head>
+<body>
+
+<nav class="bar">
+	<div class="title"><h5><a href="<?=$this->back?>">きはくなしゃしん</a></h5></div>
+	<hr />
+	<div class="menu">
+    <ol>
+        <li class="current"><h6><?=$this->current_name?></h6></li>
+		<?php foreach($this->dirs as $dir): ?>
+        <li><h6><a href="/kihaku<?=$this->directory?>/<?=$dir?>"><?=$dir?></a></h6></li>
+		<?php endforeach; ?>
+    </ol>
+	</div>
+</nav>
+
+<main class="kihaku">
+
+<div style="background-color: var(--Ultramarine);"><div>
+<a href="https://naruciakk.eu/">~</a> /
+<?php foreach($this->backline as $bkln): ?>
+<a href="<?=$bkln[1]?>"><?=$bkln[0]?></a> /
+<?php endforeach; ?>
+<?=$this->current_name?></div></div>
+
+<?php if($this->body != null || $this->cover): ?>
+<hr />
+<article>
+<?php if($this->cover): ?>
+<section>
+	<img src="/content/photos<?=$this->directory?>/main.png" alt="<?=$this->current_name?>" loading="lazy" />
+</section>
+<?php endif; ?>
+
+<?php if($this->body != null && $this->cover): ?>
+<hr />
+<?php endif; ?>
+
+<?php if($this->body != null): ?>
+<aside class="initial">
+<?=$this->body?>
+</aside>
+<?php endif; ?>
+
+</article>
+<?php endif; ?>
+
+<?php foreach($this->photos as $photo): ?>
+<hr />
+<article>
+<section>
+    <img src="/content/photos<?=$this->directory?>/<?=$photo['dataname']?>" alt="<?=$photo['date']?>" loading="lazy" />
+	<ul><li><a href="/furiku<?=$this->directory?>/<?=$photo['filename']?>"><time datetime="<?=$photo['date']?>"><?=$photo['date']?></time></a></li></ul>
+</section>
+<?php if($photo['description']): ?>
+<hr />
+<aside>
+<?=$photo['description']?>
+</aside>
+<?php endif; ?>
+</article>
+
+<?php endforeach; ?>
+
+<?php if($this->number_of_elements > $this->number_of_photos): ?>
+<hr />
+<article>
+<aside class="backline">
+	<span style="text-align: left;"><a href="/kihaku<?=$this->directory?>/<?=$this->previous?>.page">← Previous page</a>
+	<span style="float: right;"><a href="/kihaku<?=$this->directory?>/<?=$this->next?>.page">Next page →</a></span></span>
+</aside>
+</article>
+<?php endif; ?>
+
+</main>
+
+</body>
+</html>

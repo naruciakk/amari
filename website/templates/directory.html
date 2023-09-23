@@ -29,8 +29,17 @@ $for(notes)$
 <br />
 <hr />
 <div style="background-color: var(--$notes.color$)"><div>
-	<h6>$notes.date$</h6>
-	<h4><a href="$notes.directory$">$notes.title$</a></h4>
+	<h6>$notes.date$ –
+		$if(versions/allbutlast)$
+			$for(versions/allbutlast)$
+				<a href="$versions.directory$">$versions.name$, </a>
+			$endfor$
+			<a href="$versions/last.directory$">$versions.name$</a>
+		$else$
+			<a href="$versions/last.directory$">$versions.name$</a>
+		$endif$
+	</h6>
+	<h4><a href="$versions/first.directory$">$notes.title$</a></h4>
 </div></div>
 <hr />
 $endfor$

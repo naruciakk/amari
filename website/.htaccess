@@ -8,6 +8,7 @@ RewriteRule .? - [S=17]
 
 # Long links
 RewriteRule ^furiku([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.pict/?$ gallery.php [QSA,L]
+RewriteRule ^kihaku([A-Za-z0-9/-]*)/([0-9]+)\.page/?$ gallery.php [QSA,L]
 
 RewriteCond %{DOCUMENT_ROOT}/content/posts$1/index.html -f
 RewriteRule ^gatari([A-Za-z0-9/-]*)/?$ content/posts$1/index.html [QSA,L]
@@ -25,6 +26,7 @@ RewriteRule ^okucha([A-Za-z0-9/-]*)/([A-Za-z0-9-]+)\.proj?$ content/projects$1/$
 
 # List files
 RewriteRule ^furiku([A-Za-z0-9/-]*)/?$ gallery.php [QSA,L]
+RewriteRule ^kihaku([A-Za-z0-9/-]*)/?$ gallery.php [QSA,L]
 
 # Short links precedence
 RewriteCond %{DOCUMENT_ROOT}/content/feed.xml -f

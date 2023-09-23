@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>naruciakk</title>
+  <title><?=$this->current_name?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/resources/dinish.css" />
 	<link rel="stylesheet" href="/resources/amari.css" />
@@ -20,8 +20,7 @@
 <?php foreach($this->backline as $bkln): ?>
 <a href="<?=$bkln[1]?>"><?=$bkln[0]?></a> /
 <?php endforeach; ?>
-<?=$this->current_name?>
-</div></div>
+<?=$this->current_name?></div></div>
 <hr />
 
 <?php if($this->body != null): ?>

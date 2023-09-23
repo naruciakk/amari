@@ -100,7 +100,7 @@ div > h2 {
 	.container { width: 85%; padding: 0; }
 }
 
-/* Photograph specific styles */
+/* Furiku specific styles */
 
 .button {
   display: inline-block;
@@ -117,12 +117,12 @@ div > h2 {
   box-sizing: border-box;
 }
 
-
 .img-photo {
 	max-width: 100%;
 	max-height: 100vh;
 	margin: 0;	
 }
+
 .photo {
 	width: 100%;
 	text-align: center;
@@ -130,10 +130,12 @@ div > h2 {
 	max-height: 100vh;
 	margin-bottom: 0.4em;
 }
+
 .description {
 	margin: 0;
 	padding: 0;
 }
+
 .inside {
 	width: 100%;
 	max-width: 1064px;
@@ -141,11 +143,189 @@ div > h2 {
 	padding: 0.4em;
 	box-sizing: border-box; 
 }
+
 .anchor-blank {
 	color: #d3d7cf;
 	text-decoration: none;
 }
+
 .anchor-blank:hover {
 	color: #d3d7cf;
 	text-decoration: underline;
+}
+
+main.furiku div.photo, main.furiku div.description {
+	width: 100%;
+	max-width: 1064px;
+	margin: 0;
+	padding: 0;
+}
+
+main.furiku {
+	max-width: 1064px;
+	border-left: 1px var(--Text) solid;
+	border-right: 1px var(--Text) solid;
+	min-height: 100vh;
+	margin: 0 auto;
+}
+
+main.furiku div.photo {
+	text-align: center;
+	background-color: var(--Blue);
+}
+
+main.furiku div.photo img {
+	display: block;
+	margin: 0 auto;
+}
+
+main.furiku div.description {
+	padding: 1em;
+	background-color: var(--Beaver);
+}
+
+/* Kihaku specific styles */
+
+main.kihaku {
+	margin-left: 210px;
+	max-width: 1064px;
+	border-right: 1px var(--Text) solid;
+	min-height: 100vh;
+}
+
+nav.bar {
+	display: block;
+	box-sizing: border-box;
+	position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 210px;
+	background: var(--Green);
+	border-right: 1px var(--Text) solid;
+	text-align: left;
+}
+
+nav.bar .menu {
+	padding: 30px;
+	overflow: auto;
+}
+
+nav.bar .title {
+	margin: 0;
+	background-color: var(--Amber);
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+nav.bar ol {
+	list-style: none;
+}
+
+nav.bar li {
+	position: relative;
+}
+
+nav.bar li a {
+	display: inline-block;
+	line-height: 1.2;
+	font-weight: 400;
+	opacity: 1;
+	text-decoration: none;
+	transition: color .2s;
+}
+
+nav.bar li.current::before {
+	content: '';
+	display: block;
+	border-left: 10px solid;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	position: absolute;
+	height: 0;
+	width: 0;
+	left: -30px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+main.kihaku article, main.kihaku section {
+	width: 100%;
+	max-width: 1064px;
+	margin: 0;
+	padding: 0;
+}
+
+main.kihaku aside {
+	padding: 1em;
+	background-color: var(--Beaver);
+}
+
+main.kihaku aside.initial {
+	padding: 2em;
+	background-color: var(--Background);
+}
+
+main.kihaku aside.backline {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
+	background-color: var(--Ultramarine);
+}
+
+main.kihaku section {
+	text-align: center;
+	background-color: var(--Blue);
+}
+
+main.kihaku section img {
+	display: block;
+	margin: 0 auto;
+}
+
+main.kihaku section ul {
+	list-style: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: .8em;
+}
+
+main.kihaku section li {
+	display: inline-block;
+	margin-left: .1em;
+}
+
+main.kihaku section ul a {
+	display: inline-block;
+	padding: .1em .5em;
+	min-width: 1em;
+	background-color: var(--Ultramarine);
+	text-align: center;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+    nav.bar {
+        position: relative;
+        width: auto;
+		border-right: none;
+		border-bottom: 1px var(--Text) solid;
+    }
+
+    nav.bar ol {
+        margin-right: 70px;
+    }
+
+    main.kihaku {
+        margin-left: 0;
+    }
+
+    main.kihaku aside, main.kihaku article:nth-child(odd) aside {
+        left: 0;
+    }
 }

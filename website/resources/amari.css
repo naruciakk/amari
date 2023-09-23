@@ -32,7 +32,7 @@
 	--Beaver: var(--AmariBeaver);
 	--Ultramarine: var(--AmariUltramarine);
 
-	@media (prefers-color-scheme: dark) {
+	@media (prefers-color-scheme: light) {
 		--Background: var(--AmariReBackground);
 		--Text: var(--AmariReText);
 		--Anchor: var(--AmariReAnchor);

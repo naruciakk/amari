@@ -89,6 +89,14 @@
 \setbeamerfont{frametitle}{size=\large,series=\owowhatsthis}
 \setbeamercolor{background canvas}{bg=AmariBaseBackground}
 
+% note page template
+\setbeamercolor{note page}{bg=AmariBaseBackground}
+\setbeamertemplate{note page}{
+    \insertvrule{\paperheight}{note page.bg}
+    \vskip-\paperheight
+	\insertnote
+}
+
 % since I don't know a better way to do this, these are all switches
 % doing `\setcounter{showProgressBar}{0}` will turn the progress bar off (I turn it off for Appendix slides)
 % etc

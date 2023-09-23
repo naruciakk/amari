@@ -1,6 +1,8 @@
 <?php
 include 'vendor/autoload.php';
 
+define("NUMBER_OF_PHOTOS", 25);
+
 class Template {
 	private $_scriptPath="templates/";
 	public $properties;
@@ -76,6 +78,65 @@ function getPath($name, $param, $filetypes, $datadir) {
 	return $answer;
 }
 
+function getPhotosFromPath($name, $param, $filetypes, $datadir, $starting) {
+	$Parsedown = new Parsedown();
+	$emptyParam = ltrim($param, "/");
+	$emptyParam = str_replace($name."/", "", $emptyParam);
+	if($param == "/".$name) $emptyParam = "";
+	$path = $datadir.'/'.$emptyParam;
+	$answer['body'] = null;
+	if(file_exists($path.'/index.md')) $answer['body'] = $Parsedown->text(file_get_contents($path.'/index.md'));
+	$answer['body'] = str_replace("furiku", "kihaku", $answer['body']);
+	$dirs = array_filter(glob($path.'/*'), 'is_dir');
+	$dirs = str_replace($path.'/', '', $dirs);
+	$files = glob($path.'/*.{'.$filetypes.'}', GLOB_BRACE);
+	$number_of_elements = count($files);
+	$files = array_slice($files, $starting, NUMBER_OF_PHOTOS);
+	$files = array_filter($files, function($value) {
+		return strstr($value, 'main.png') === false;
+	});
+	$photos = array();
+	foreach ($files as $photo) {
+		$new_photo = array();
+		$photo_path = "/".$photo;
+		$raw_name = basename($photo_path, '.jpg');
+		$raw_name = basename($raw_name, '.png');
+		$photo_information = exif_read_data($photo, 0, true);
+		$new_photo['description'] = utf8_encode($photo_information['IFD0']['ImageDescription']);
+		if(empty($new_photo['description'])) $new_photo['description'] = $photo_information['COMPUTED']['UserComment'];
+		if(file_exists($path.'/'.$raw_name.'.md')) $new_photo['description'] = $Parsedown->text(file_get_contents($path.'/'.$raw_name.'.md'));
+		$new_photo['dataname'] = basename($photo_path);
+		$new_photo['date'] = $photo_information['EXIF']['DateTimeOriginal'];
+		if(empty($new_photo['date'])) $new_photo['date'] = "ＮＯ　ＤＡＴＡ";
+		$new_photo['filename'] = $raw_name.'.pict';
+		array_push($photos, $new_photo);
+	}
+	$answer['photos'] = $photos;
+	$answer['dirs']	= $dirs;
+	$answer['directory'] = $emptyParam;
+	if($answer['directory'] != "") $answer['directory'] = '/'.$emptyParam;
+	$answer['back'] = dirname('/'.$name.$answer['directory']);
+	$userPath = trim("kihaku/".$emptyParam, "/");
+	$answer['current_name'] = basename($userPath);
+	$backline = "";
+	$answer['backline'] = null;
+	foreach(explode('/', $userPath) as $key =>$elem) {
+		$backline .= "/".$elem;
+		$answer['backline'][$key][0] = $elem;
+		$answer['backline'][$key][1] = $backline;	
+	}
+	array_pop($answer['backline']);
+	$answer['title'] = $emptyParam;
+	$answer['cover'] = file_exists($path.'/main.png');
+	$answer['previous'] = $starting - NUMBER_OF_PHOTOS;
+	if($answer['previous'] < 0) $answer['previous'] += $number_of_elements;
+	$answer['next'] = $starting + NUMBER_OF_PHOTOS;
+	if($answer['next'] >= $number_of_elements) $answer['next'] = 0;
+	$answer['number_of_elements'] = $number_of_elements;
+	
+	return $answer;
+}
+
 function showPhoto($name, $path) {
 	$Parsedown = new Parsedown();
 	$raw_name = basename($path, '.pict');
@@ -131,6 +192,34 @@ if(strpos($params, 'furiku')) {
 		$view->backline = $path['backline'];
 		$view->current_name = $path['current_name'];
 		echo $view->render('furiku.html');
+	}
+}
+else if(strpos($params, 'kihaku')) {
+	if(strpos($params, '.pict')) {
+		header("Location: https://naruciakk.eu");
+		exit();
+	} else {
+		$starting = 0;
+		if(strpos($params, '.page')) {
+			$raw_name = basename($params);
+			$starting = intval(str_replace(".page", "", $raw_name));
+			$params = str_replace("/".$raw_name, "", $params);
+		}
+		$path = getPhotosFromPath('kihaku',$params,'jpg,png','content/photos',$starting);
+		$view = new Template();
+		$view->body = $path['body'];
+		$view->back = $path['back'];
+		$view->dirs = $path['dirs'];
+		$view->photos = $path['photos'];
+		$view->directory = $path['directory'];
+		$view->backline = $path['backline'];
+		$view->current_name = $path['current_name'];
+		$view->cover = $path['cover'];
+		$view->previous = $path['previous'];
+		$view->next = $path['next'];
+		$view->number_of_elements = $path['number_of_elements'];
+		$view->number_of_photos = NUMBER_OF_PHOTOS;
+		echo $view->render('kihaku.html');
 	}
 } else {
 	if(strpos($params, '.pict')) {
