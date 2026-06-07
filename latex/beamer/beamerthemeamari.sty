@@ -64,7 +64,7 @@
 }
 
 % add the superior font – Comic ****, but open source
-\newfontfamily{\owowhatsthis}{[ComicRelief.ttf]}
+\newfontfamily{\owowhatsthis}{Comic Relief}
 
 \setsansfont[ItalicFont={Dinish-Italic.ttf}, BoldFont={Dinish-Bold.ttf}]{Dinish-Regular.ttf}
 
@@ -186,12 +186,19 @@
 \setbeamertemplate{title page}{
 	\begin{tikzpicture}
 		\useasboundingbox (1cm,0) rectangle(\the\paperwidth,\the\paperheight);
-		\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.9\slideheight-0.15cm) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\inserttitle}}};
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.8\slideheight-0.15cm) {\color{AmariBaseText}\small{\insertsubtitle}};
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.70\slideheight-0.15cm) {\color{AmariBaseText}\footnotesize\owowhatsthis{\insertauthor}};
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.65\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertinstitute}};
-		\node[text width=\the\paperwidth-1cm,align=left] at (0.5\slidewidth, 0.57\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertdate}};
+		\fill[color=AmariAccent, opacity=0.8] (0, 0cm) rectangle(\slidewidth,4.1cm);
+		\fill[color=AmariBeaver] (0, 0cm) rectangle(14mm,\slideheight+1mm);
+		\fill[color=AmariGray] (0, 0cm) rectangle(12mm,\slideheight+1mm);
+		\fill[color=AmariTeal] (0, 0cm) rectangle(10mm,\slideheight+1mm);
+		\fill[color=AmariUltramarine] (0, 0cm) rectangle(8mm,\slideheight+1mm);
+		\fill[color=AmariBlue] (0, 0cm) rectangle(6mm,\slideheight+1mm);
+		\fill[color=AmariGreen] (0, 0cm) rectangle(4mm,\slideheight+1mm);
+		\fill[color=AmariAmber] (0, 0cm) rectangle(2mm,\slideheight+1mm);
+		\node[text width=\slidewidth-2cm,align=left] at (0.58\slidewidth-0.5cm, 0.39\slideheight-0.15cm) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\inserttitle}}};
+		\node[text width=\slidewidth-2cm,align=left] at (0.58\slidewidth-0.5cm, 0.29\slideheight-0.15cm) {\color{AmariBaseText}\small{\insertsubtitle}};
+		\node[text width=\slidewidth-2cm,align=left] at (0.58\slidewidth-0.5cm, 0.20\slideheight-0.15cm) {\color{AmariBaseText}\footnotesize\owowhatsthis{\insertauthor}};
+		\node[text width=\slidewidth-2cm,align=left] at (0.58\slidewidth-0.5cm, 0.15\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertinstitute}};
+		\node[text width=\slidewidth-2cm,align=left] at (0.58\slidewidth-0.5cm, 0.08\slideheight-0.15cm) {\color{AmariBaseText}\scriptsize\owowhatsthis{\insertdate}};
 	\end{tikzpicture}
 }
 
@@ -221,16 +228,16 @@
 		\begin{frame}
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}{
 		\begin{frame}[image=#1]
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+				\fill[color=AmariAccent, opacity=0.8] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}
@@ -242,18 +249,18 @@
 		\begin{frame}
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.6cm, 0.78\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{#2}};
 			\end{tikzpicture}
 		\end{frame}
 	}{
 		\begin{frame}[image=#1]
 			\begin{tikzpicture}
 				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 4cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.85\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.75\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
+				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.78\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
 			\end{tikzpicture}
 		\end{frame}
 	}
