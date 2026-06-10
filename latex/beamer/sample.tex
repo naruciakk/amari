@@ -1,10 +1,11 @@
-\documentclass[aspectratio=169,10pt]{beamer}
+\documentclass[aspectratio=43,10pt]{beamer}
 %\documentclass[10pt]{beamer}
 \usepackage{blindtext}
 \usepackage{pgfpages}
 \usetheme[accent=Green,kaigijitsu]{amari}
 
 % \setbeameroption{show notes on second screen=right}
+\setbeameroption{show notes}
 
 \title{Amari Beamer example}
 \subtitle{Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiamlobortis facilisis sem. Nullam nec mi et neque pharetra sollicitudin.}
@@ -51,12 +52,23 @@
 	\begin{frame}
 		\frametitle{Lorem 1}
 		\blindtext
+		\note{Test note}
 	\end{frame}
 
 	\begin{frame}
 		\frametitle{Lorem 2}
 		\blindtext
 	\end{frame}
+
+	\begin{frame}{My Slide Title}
+    	Slide content goes here...
+	\end{frame}
+	\note{This is all the text for the first note page.}
+
+	% This frame is compiled for notes but completely hidden from the actual presentation
+	\begin{frame}<0>{My Slide Title}
+	\end{frame}
+	\note{This text goes onto the second note page, completely fresh!}
 
 	\fumi[bg.jpg]{Conclusions}
 

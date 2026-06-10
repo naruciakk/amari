@@ -89,13 +89,48 @@
 \setbeamerfont{frametitle}{size=\large,series=\owowhatsthis}
 \setbeamercolor{background canvas}{bg=AmariBaseBackground}
 
+\setbeamertemplate{frametitle}{
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\slidewidth, sep=0.5em, center]{frametitle}
+		\usebeamerfont{frametitle}\contour{AmariBaseBackground}{\insertframetitle}\par
+        \ifx\insertframesubtitle\@empty\else
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}
+        \fi
+    \end{beamercolorbox}
+    \nointerlineskip
+	\hspace*{-\beamer@leftmargin}% Pulls the line to the absolute left edge
+    {\color{AmariBaseText}\rule{\paperwidth}{0.5pt}}% Colors the line and makes it full width
+}
+
 % note page template
+\makeatletter
 \setbeamercolor{note page}{bg=AmariBaseBackground}
 \setbeamertemplate{note page}{
+    \setbeamercolor{normal text}{fg=AmariBaseText, bg=AmariBaseBackground}
+    \setbeamercolor{item}{fg=AmariAccent}
+    \setbeamercolor{itemize item}{fg=AmariBaseText}
+    \setbeamercolor{enumerate item}{fg=AmariBaseText}
+    \setbeamercolor{item projected}{fg=AmariBaseBackground, bg=AmariAccent} 
+    \usebeamercolor[fg]{normal text}
     \insertvrule{\paperheight}{note page.bg}
     \vskip-\paperheight
-	\insertnote
+    
+    % Frameheader block
+    \nointerlineskip
+    \begin{beamercolorbox}[wd=\slidewidth, sep=0.5em, center]{frametitle}
+        \usebeamerfont{frametitle}\contour{AmariBaseBackground}{\insertframetitle}\par
+        \ifx\insertframesubtitle\@empty\else
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}
+        \fi
+    \end{beamercolorbox}
+    \nointerlineskip
+    \hspace*{-\beamer@leftmargin}% Pulls the line to the absolute left edge
+    {\color{AmariBaseText}\rule{\paperwidth}{0.5pt}}% Colors the line and makes it full width
+    \vskip 0.5em 
+    
+    \insertnote
 }
+\makeatother
 
 % since I don't know a better way to do this, these are all switches
 % doing `\setcounter{showProgressBar}{0}` will turn the progress bar off (I turn it off for Appendix slides)
@@ -223,45 +258,69 @@
 
 % custom section
 \newcommand{\fumi}[2][]{
-	\section{#2}
-	\ifthenelse{\equal{#1}{}}{
-		\begin{frame}
-			\begin{tikzpicture}
-				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
-			\end{tikzpicture}
-		\end{frame}
-	}{
-		\begin{frame}[image=#1]
-			\begin{tikzpicture}
-				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent, opacity=0.8] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
-			\end{tikzpicture}
-		\end{frame}
-	}
+    \section{#2}
+    \ifthenelse{\equal{#1}{}}{
+        \begin{frame}
+            \begin{tikzpicture}
+                \useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+                \fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight+1mm);
+                \draw[color=AmariBaseText, line width=0.5pt] (0, 6cm) -- (\slidewidth, 6cm);
+                
+                % Invisible diagonal path to calculate the exact geometric center of the rectangle
+                \path (0, 6cm) -- (\slidewidth, \slideheight+1mm) 
+                    node[midway, text width=\slidewidth, align=center] 
+                    {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+            \end{tikzpicture}
+        \end{frame}
+    }{
+        \begin{frame}[image=#1]
+            \begin{tikzpicture}
+                \useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+                \fill[color=AmariAccent, opacity=0.8] (0, 6cm) rectangle(\slidewidth,\slideheight+1mm);
+                \draw[color=AmariBaseText, line width=0.5pt] (0, 6cm) -- (\slidewidth, 6cm);
+                
+                % Applied the same centering trick here for the image-background frame
+                \path (0, 6cm) -- (\slidewidth, \slideheight+1mm) 
+                    node[midway, text width=\slidewidth, align=center] 
+                    {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
+            \end{tikzpicture}
+        \end{frame}
+    }
 }
 
 \newcommand{\subfumi}[2][]{
-	\subsection{#2}
-	\ifthenelse{\equal{#1}{}}{
-		\begin{frame}
-			\begin{tikzpicture}
-				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.6cm, 0.78\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{#2}};
-			\end{tikzpicture}
-		\end{frame}
-	}{
-		\begin{frame}[image=#1]
-			\begin{tikzpicture}
-				\useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
-				\fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight-0.15cm);
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+1.5cm, 0.88\slideheight) {\color{AmariBaseText}\Large\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}};
-				\node[text width=\the\paperwidth,align=left] at (0.45\slidewidth+2cm, 0.78\slideheight) {\color{AmariBaseText}\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}};
-			\end{tikzpicture}
-		\end{frame}
-	}
+    \subsection{#2}
+    \ifthenelse{\equal{#1}{}}{
+        \begin{frame}
+            \begin{tikzpicture}
+                \useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+                \fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight+1mm);
+                \draw[color=AmariBaseText, line width=0.5pt] (0, 6cm) -- (\slidewidth, 6cm);
+                
+                % Centered path tracking the exact rectangle coordinates
+                \path (0, 6cm) -- (\slidewidth, \slideheight-0.15cm) 
+                    node[midway, text width=\slidewidth, align=center] {
+                        \color{AmariBaseText}
+                        {\small\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}}\\[0.2em]
+                        {\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}}
+                    };
+            \end{tikzpicture}
+        \end{frame}
+    }{
+        \begin{frame}[image=#1]
+            \begin{tikzpicture}
+                \useasboundingbox (1cm,0) rectangle(\slidewidth,\slideheight);
+                \fill[color=AmariAccent] (0, 6cm) rectangle(\slidewidth,\slideheight+1mm);
+                \draw[color=AmariBaseText, line width=0.5pt] (0, 6cm) -- (\slidewidth, 6cm);
+                
+                % Centered path tracking the exact rectangle coordinates
+                \path (0, 6cm) -- (\slidewidth, \slideheight-0.15cm) 
+                    node[midway, text width=\slidewidth, align=center] {
+                        \color{AmariBaseText}
+                        {\small\contour{AmariBaseBackground}{\owowhatsthis{\insertsection}}}\\[0.2em]
+                        {\large\contour{AmariBaseBackground}{\owowhatsthis{#2}}}
+                    };
+            \end{tikzpicture}
+        \end{frame}
+    }
 }
